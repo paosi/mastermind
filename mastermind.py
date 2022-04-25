@@ -4,7 +4,7 @@ import requests
 
 
 # Print instructions
-def instructions():
+def intro():
 
   print("-------------------------------------------------------------------------------------")
   print("**   **     **     ****  *******  ******  ******   **   **  *******  **    *  ****** ")
@@ -37,7 +37,7 @@ def get_random(url):
 
 
 # Asks the user for a 4 number guess and compares it to the random numbers.
-def guess_nums(winning_nums):
+def mastermind(winning_nums):
 
   print(winning_nums, "\n")
   print("Guess the combination. You have 10 tries.")
@@ -65,8 +65,7 @@ def guess_nums(winning_nums):
       print("YOU WON YOU LUCKY SON OF A BITCH!")
       return
 
-    # Add functionality for partially correct guesses here.
-
+    # Functionality for exact and partially correct guesses here.
     else:
       exact = 0
       partial = 0
@@ -81,7 +80,6 @@ def guess_nums(winning_nums):
             partial += 1
             winning_nums_copy.remove(guess_list[j])
 
-      print(partial, exact)
       print("You got {x} numbers correct. {y} are in the exact spot.".format(x = partial + exact, y = exact))
     
       i -= 1
@@ -97,9 +95,10 @@ def get_history():
 
   return history
 
+
 if __name__ == "__main__":
 
-  instructions()
+  intro()
   url = "https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new"
   winning_nums = get_random(url)
-  guess_nums(winning_nums)
+  mastermind(winning_nums)
