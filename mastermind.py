@@ -68,6 +68,22 @@ def guess_nums(winning_nums):
     # Add functionality for partially correct guesses here.
 
     else:
+      exact = 0
+      partial = 0
+      winning_nums_copy = winning_nums.copy()
+
+      for j in range(len(guess_list)):
+        if guess_list[j] == winning_nums[j]:
+          exact += 1
+          winning_nums_copy.remove(guess_list[j])
+        else:
+          if guess_list[j] in winning_nums_copy:
+            partial += 1
+            winning_nums_copy.remove(guess_list[j])
+
+      print(partial, exact)
+      print("You got {x} numbers correct. {y} are in the exact spot.".format(x = partial + exact, y = exact))
+    
       i -= 1
       print("Wrong. You have {x} tries left".format(x = i))
 
