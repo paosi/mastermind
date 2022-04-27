@@ -10,7 +10,7 @@ def intro():
   print("**   **     **     ****  *******  ******  ******   **   **  *******  **    *  ****** ")
   print("* * * *    *  *   **        *     *       *     *  * * * *     *     * *   *  *     *")
   print("*  *  *   * ** *    **      *     ****    ******   *  *  *     *     *  *  *  *     *")
-  print("*     *  *      *     **    *     *       *     *  *     *     *     *   * *  *     *" )
+  print("*     *  *      *     **    *     *       *     *  *     *     *     *   * *  *     *")
   print("*     *  *      *  ****     *     ******  *     *  *     *  *******  *    **  ****** ")
   print("-------------------------------------------------------------------------------------\n")
   print("INSTRUCTIONS:\n")
@@ -39,7 +39,7 @@ def get_random(url):
 # Asks the user for a 4 number guess and compares it to the random numbers.
 def mastermind(winning_nums):
 
-  print(winning_nums, "\n")
+  #print(winning_nums, "\n")
   print("Guess the combination. You have 10 tries.")
 
   i = 10
@@ -51,7 +51,7 @@ def mastermind(winning_nums):
 
     for num in guess:
       if num not in possible_nums:
-        print("{x} is an invalid guess. Choose 4 numbers between 0-7.".format(x = num))
+        print(f"{num} is an invalid guess. Choose 4 numbers between 0-7.")
         continue
       guess_list.append(num)
     
@@ -70,22 +70,43 @@ def mastermind(winning_nums):
       exact = 0
       partial = 0
       winning_nums_copy = winning_nums.copy()
+      guess_list_copy = guess_list.copy()
 
+      # Check for exact matches
       for j in range(len(guess_list)):
         if guess_list[j] == winning_nums[j]:
           exact += 1
           winning_nums_copy.remove(guess_list[j])
+          guess_list_copy.remove(guess_list[j])
         else:
-          if guess_list[j] in winning_nums_copy:
-            partial += 1
-            winning_nums_copy.remove(guess_list[j])
+          continue
+      
+      # Check for partial match      
+      for k in range(len(guess_list_copy)):
+        if guess_list_copy[k] in winning_nums_copy:
+          partial += 1
+          winning_nums_copy.remove(guess_list_copy[k])
+        else:
+          continue
 
-      print("You got {x} numbers correct. {y} are in the exact spot.".format(x = partial + exact, y = exact))
-    
+      # Print formatting
+      if exact == 1:
+        y = "is"
+      else:
+        y = "are"
+
+      if partial == 1:
+        x = "number"
+      else:
+        x = "numbers"
+
+      print(f"You got {partial + exact} {x} correct and {exact} {y} in the exact spot.")
+
       i -= 1
-      print("Wrong. You have {x} tries left".format(x = i))
+      print(f"Wrong. You have {i} tries left")
 
   print("You lost. Big time.")
+  return
 
 
 # Guess history and computer feedback function.
