@@ -4,6 +4,11 @@ import requests
 import os
 from playsound import playsound
 
+"""
+Sound effects downloaded from mixkit.co and zapsplat.com
+
+"""
+
 
 # Print instructions
 def intro():
