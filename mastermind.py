@@ -55,7 +55,7 @@ def mastermind(winning_nums):
 
   sounds = os.path.join(os.getcwd(), "sounds", "")
 
-  #print(winning_nums)
+  print(winning_nums)
   print("\n")
   print("Guess the combination. You have 10 tries remaining.")
   print("------------------------------------------------------------------------------------")
@@ -116,7 +116,14 @@ def mastermind(winning_nums):
           nth = "rd"
         case _:
           nth = "th"
-      print(f"YOU ARE A WINNER! YOU GOT IT ON YOUR {count}{nth} TRY!")
+      print(f"YOU ARE A WINNER! YOU GOT IT ON YOUR {count}{nth} TRY!\n")
+      print("                 GAME SUMMARY:")
+      print("===================================================")
+      for l in log:        
+        print(l)
+      print("===================================================\n")
+      print("                WINNING NUMBERS:")
+      print(f"              {winning_nums}")
       print("------------------------------------------------------------------------------------\n")
       playsound(sounds + "005.wav")
       return
@@ -159,7 +166,7 @@ def mastermind(winning_nums):
         playsound(sounds + "003.mp3")
 
       log_dict[count] = guess_list
-      log_dict["Correct"] = partial = exact
+      log_dict["Correct"] = partial + exact
       log_dict["Exact"] = exact
       log.append(log_dict)
       i -= 1
