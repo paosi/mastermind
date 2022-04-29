@@ -17,7 +17,7 @@ From the terminal:
 ```
 git clone https://github.com/paosi/mastermind.git
 ```
-Navigate to the mastermind directory and activate your virtual environment, if desired.
+Navigate to the mastermind directory.
 ```
 cd mastermind
 ```
@@ -31,7 +31,7 @@ chmod +x mastermind.py
 ```
 
 ## playing the game
-#### (((sound on!)))
+#### (((sound on)))
 
 From the terminal, launch the game.
 ```
