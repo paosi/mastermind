@@ -55,7 +55,7 @@ def mastermind(winning_nums):
 
   sounds = os.path.join(os.getcwd(), "sounds", "")
 
-  print(winning_nums)
+  #print(winning_nums)
   print("\n")
   print("Guess the combination. You have 10 tries remaining.")
   print("------------------------------------------------------------------------------------")
