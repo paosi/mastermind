@@ -106,6 +106,7 @@ def mastermind(winning_nums):
     print("\n")
     print(guess_list)
 
+    # Check if player is a winner
     if guess_list == winning_nums:
       match count:
         case 1:
